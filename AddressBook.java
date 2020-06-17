@@ -7,8 +7,7 @@ import java.util.Scanner;
 public class AddressBook {
     static List<Person> record = new LinkedList<Person>();
     public static void main(String[]args){
-
-        System.out.println("Welcome to addressBook");
+        System.out.println("welcome to the address book");
        AddressBook obj = new AddressBook();
        int repeat=1;
         while(repeat==1) {
