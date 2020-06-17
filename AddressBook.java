@@ -18,6 +18,16 @@ public class AddressBook {
            switch (choice2) {
                case 1:
                    Person p = obj.addPerson();
+                   boolean isPresent=false
+                   for (Person p1:record) {
+                       if((p.getFirstName()+ " " +p.getLastName()).equals(p1.getFirstName()+ " " +p1.getLastName())){
+                           System.out.println("name already present");
+                           isPresent=true;
+                           break;
+                       }
+
+                   }
+                   if(isPresent==false)
                    record.add(p);
                    break;
                case 2:
