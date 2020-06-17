@@ -13,7 +13,7 @@ public class AddressBook {
        int repeat=1;
         while(repeat==1) {
        Scanner choice = new Scanner(System.in);
-           System.out.println("Enter the choice \n1 addPerson \n2 view \n3 edit ");
+           System.out.println("Enter the choice \n1 AddPerson \n2 ViewRecords \n3 EditInformation ");
            int choice2 = choice.nextInt();
            switch (choice2) {
                case 1:
@@ -22,12 +22,52 @@ public class AddressBook {
                    break;
                case 2:
                    System.out.println("record view");
-
-                   System.out.println(obj.record);
-
+                   for(Person p1:record) {
+                       System.out.println(p1);
+                   }
                    break;
                case 3:
                    System.out.println("Edit the information");
+                   System.out.println("Enter first and last Name");
+                   Scanner input=new Scanner(System.in);
+                   String name1=input.nextLine();
+                   int listSize=record.size();
+                   for (int i= 0; i<record.size();i++){
+                       String name=record.get(i).getFirstName() + " " + record.get(i).getLastName();
+                       if(name1.equals(name)==true){
+                           System.out.println("Enter the choice \n1 State \n2 city \n3 zip \n4 phoneNumber");
+                           int choice3=input.nextInt();
+                           switch (choice3) {
+                               case 1 :
+                                   System.out.println("Enter the State");
+                                   String state=input.next();
+                                   record.get(i).setState(state);
+                                   break;
+
+                               case 2 :
+                                   System.out.println("Enter the City");
+                                   String city=input.next();
+                                   record.get(i).setCity(city);
+                                   break;
+
+                               case 3 :
+                                   System.out.println("Enter the Zip");
+                                   String zip=input.next();
+                                   record.get(i).setZip(zip);
+                                   break;
+
+                               case 4 :
+                                   System.out.println("Enter the phoneNumber");
+                                   String phoneNumber=input.next();
+                                   record.get(i).setPhoneNumber(phoneNumber);
+                                   break;
+
+                               default:
+                                   System.out.println("Invalid Choice");
+                                   break;
+                           }
+                       }
+                   }
                    break;
                default:
                    System.out.println("Invalid choice");
@@ -65,5 +105,8 @@ public class AddressBook {
         String phoneNumber=input.next();
         p.setPhoneNumber(phoneNumber);
         return p;
+    }
+    public void editInformation(){
+
     }
 }
