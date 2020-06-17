@@ -13,7 +13,7 @@ public class AddressBook {
        int repeat=1;
         while(repeat==1) {
        Scanner choice = new Scanner(System.in);
-           System.out.println("Enter the choice \n1 AddPerson \n2 ViewRecords \n3 EditInformation ");
+           System.out.println("Enter the choice \n1 AddPerson \n2 ViewRecords \n3 EditInformation \n4 deleteRecord");
            int choice2 = choice.nextInt();
            switch (choice2) {
                case 1:
@@ -69,6 +69,23 @@ public class AddressBook {
                        }
                    }
                    break;
+
+               case 4 :
+
+                   System.out.println("Enter the Person first and last Name");
+                   Scanner input1=new Scanner(System.in);
+                  String name3=input1.nextLine();
+                  // int listSize=record.size();
+
+                   for (int i= 0; i<record.size();i++){
+                       String name4=record.get(i).getFirstName() + " " + record.get(i).getLastName();
+                       if(name3.equals(name4)==true){
+                           record.remove(i);
+                       }
+
+                       }
+                   break;
+
                default:
                    System.out.println("Invalid choice");
                    break;
@@ -106,7 +123,5 @@ public class AddressBook {
         p.setPhoneNumber(phoneNumber);
         return p;
     }
-    public void editInformation(){
 
-    }
 }
