@@ -10,7 +10,7 @@ public class AddressBook {
        int repeat=1;
         while(repeat==1) {
        Scanner choice = new Scanner(System.in);
-           System.out.println("Enter the choice \n1 AddPerson \n2 ViewRecords \n3 EditInformation \n4 deleteRecord \n5 sortTheEntriesByName \n6 sortTheEntriesByAddress \n7 viewByCityAndState ");
+           System.out.println("Enter the choice \n1 AddPerson \n2 ViewRecords \n3 EditInformation \n4 deleteRecord \n5 sortTheEntriesByName \n6 sortTheEntriesByAddress \n7 viewByCityAndState \n8 searchRecordByCityOrState");
            int choice2 = choice.nextInt();
            switch (choice2) {
                case 1:
@@ -185,6 +185,45 @@ public class AddressBook {
                        viewRecords.put(fullAddress, person);
                    }
                    viewRecords.forEach((k,v)->System.out.println(v.toString()));
+                   break;
+
+               case 8 :
+                   Scanner sc=new Scanner(System.in);
+                   int flag=0;
+                   System.out.println("Enter choice \n1 searchByCity \n2 searchByState");
+                   int choice6 = sc.nextInt();
+                   switch (choice6){
+                       case 1:
+                           System.out.print("Enter city: ");
+                           String city = sc.next();
+                           for (Person person : record){
+                               if (city.equals(person.getCity())){
+                                   System.out.println(person.toString());
+                                   flag=1;
+                               }
+                           }
+                           break;
+                       case 2:
+                           System.out.print("Enter state: ");
+                           String state = sc.next();
+                           for (Person person : record){
+                               if (state.equals(person.getState())){
+                                   System.out.println(person.toString());
+                                   flag=1;
+                               }
+                           }
+                           break;
+
+                       default:
+                           System.out.println("Invalid choice");
+                           break;
+
+                   }
+                   if (flag == 0){
+                       System.out.println("No such city in Address Book !!!");
+                   }
+
+           break;
 
 
 
