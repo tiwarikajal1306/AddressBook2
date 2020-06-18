@@ -1,9 +1,6 @@
 package com.bridgelabz.addressbook;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBook {
     static List<Person> record = new LinkedList<Person>();
@@ -13,7 +10,7 @@ public class AddressBook {
        int repeat=1;
         while(repeat==1) {
        Scanner choice = new Scanner(System.in);
-           System.out.println("Enter the choice \n1 AddPerson \n2 ViewRecords \n3 EditInformation \n4 deleteRecord \n5 sortTheEntriesByName \n6 sortTheEntriesByAddress ");
+           System.out.println("Enter the choice \n1 AddPerson \n2 ViewRecords \n3 EditInformation \n4 deleteRecord \n5 sortTheEntriesByName \n6 sortTheEntriesByAddress \n7 viewByCityAndState ");
            int choice2 = choice.nextInt();
            switch (choice2) {
                case 1:
@@ -179,6 +176,15 @@ public class AddressBook {
                            break;
 
                    }
+
+               case 7 :
+
+                   Map<String,Person> viewRecords= new TreeMap<>();
+                   for (Person person : record){
+                       String fullAddress = person.getCity()+" "+person.getState();
+                       viewRecords.put(fullAddress, person);
+                   }
+                   viewRecords.forEach((k,v)->System.out.println(v.toString()));
 
 
 
