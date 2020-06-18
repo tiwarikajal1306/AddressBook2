@@ -13,7 +13,7 @@ public class AddressBook {
        int repeat=1;
         while(repeat==1) {
        Scanner choice = new Scanner(System.in);
-           System.out.println("Enter the choice \n1 AddPerson \n2 ViewRecords \n3 EditInformation \n4 deleteRecord \n5 sortTheEntriesByName ");
+           System.out.println("Enter the choice \n1 AddPerson \n2 ViewRecords \n3 EditInformation \n4 deleteRecord \n5 sortTheEntriesByName \n6 sortTheEntriesByAddress ");
            int choice2 = choice.nextInt();
            switch (choice2) {
                case 1:
@@ -121,6 +121,66 @@ public class AddressBook {
 
 
                    break;
+
+               case 6 :
+                   System.out.println("sort the entries in addressBook by \n1 sortByCity \n2 sortByState \n3 sortByZip");
+                   Scanner input5=new Scanner(System.in);
+                   int choice4=input5.nextInt();
+                   switch (choice4) {
+                       case 1:
+                           for (int i = 0; i < record.size(); i++) {
+                               for (int j = 1; j < record.size() - i; j++) {
+                                   if (record.get(j - 1).getCity().compareToIgnoreCase((record.get(j).getCity())) > 0) {
+                                       Collections.swap(record, j - 1, j);
+                                   }
+                               }
+                           }
+
+                           System.out.println("record view");
+                           for (Person p1 : record) {
+                               System.out.println(p1);
+                           }
+
+                           break;
+
+                       case 2:
+                           for (int i = 0; i < record.size(); i++) {
+                               for (int j = 1; j < record.size() - i; j++) {
+                                   if (record.get(j - 1).getState().compareToIgnoreCase((record.get(j).getState())) > 0) {
+                                       Collections.swap(record, j - 1, j);
+                                   }
+                               }
+                           }
+
+                           System.out.println("record view");
+                           for (Person p1 : record) {
+                               System.out.println(p1);
+                           }
+
+                           break;
+
+                       case 3:
+                           for (int i = 0; i < record.size(); i++) {
+                               for (int j = 1; j < record.size() - i; j++) {
+                                   if ((Integer.parseInt(record.get(j - 1).getZip())) > (Integer.parseInt(record.get(j).getZip()))) {
+                                       Collections.swap(record, j - 1, j);
+                                   }
+                               }
+                           }
+
+                           System.out.println("record view");
+                           for (Person p1 : record) {
+                               System.out.println(p1);
+                           }
+
+                           break;
+                       default:
+                           System.out.println("Invalid choice");
+                           break;
+
+                   }
+
+
 
                default:
                    System.out.println("Invalid choice");
