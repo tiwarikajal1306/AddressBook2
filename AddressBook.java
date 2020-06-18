@@ -1,5 +1,6 @@
 package com.bridgelabz.addressbook;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,12 +13,12 @@ public class AddressBook {
        int repeat=1;
         while(repeat==1) {
        Scanner choice = new Scanner(System.in);
-           System.out.println("Enter the choice \n1 AddPerson \n2 ViewRecords \n3 EditInformation \n4 deleteRecord");
+           System.out.println("Enter the choice \n1 AddPerson \n2 ViewRecords \n3 EditInformation \n4 deleteRecord \n5 sortTheEntriesByName ");
            int choice2 = choice.nextInt();
            switch (choice2) {
                case 1:
                    Person p = obj.addPerson();
-                   boolean isPresent=false
+                   boolean isPresent=false;
                    for (Person p1:record) {
                        if((p.getFirstName()+ " " +p.getLastName()).equals(p1.getFirstName()+ " " +p1.getLastName())){
                            System.out.println("name already present");
@@ -93,6 +94,32 @@ public class AddressBook {
                        }
 
                        }
+                   break;
+
+               case 5 :
+                   for (int i=0;i<record.size();i++)
+                   {
+                       for (int j=1;j<record.size()-i;j++)
+                       {
+                           if(record.get(j-1).getFirstName().compareToIgnoreCase((record.get(j).getFirstName()))>0)
+                           {
+                               Collections.swap(record, j-1, j);
+                           }
+                           else if(record.get(j-1).getFirstName().compareToIgnoreCase((record.get(j).getFirstName()))==0)
+                           {
+                               if(record.get(j-1).getLastName().compareTo(record.get(j).getLastName())>0)
+                               {
+                                   Collections.swap(record, j-1, j);
+                               }
+                           }
+                       }
+                   }
+                   System.out.println("record view");
+                   for(Person p1:record) {
+                       System.out.println(p1);
+                   }
+
+
                    break;
 
                default:
